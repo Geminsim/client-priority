@@ -1,31 +1,51 @@
-# 潜客优先级 Excel 插件
+# Lead Priority Excel Add-in
 
-一个本地运行的 Microsoft Excel Office Add-in。它会识别客户表、按可调权重计算 0–100 分、生成 A/B/C/D 优先级、自动排序，并创建包含分布图和统计指标的“优先级仪表盘”。数据不会离开工作簿。
+A local Microsoft Excel Office Add-in that scores prospective customers, assigns A–D priorities, sorts the lead list, and creates a dashboard with summary metrics and charts. All data stays inside the workbook.
 
-## 数据格式
+## Features
 
-首行是列名，至少需要 `公司名称`。推荐列如下，值可填写 0–100、1–10 或 1–5：
+- Detects common English and Chinese lead-data headers.
+- Calculates a normalized 0–100 priority score using adjustable weights.
+- Assigns clear A, B, C, or D follow-up priorities.
+- Adds a concise scoring rationale for every lead.
+- Sorts leads by priority score.
+- Creates a Lead Priority Dashboard with distribution and weight charts.
 
-| 公司名称 | 客户匹配度 | 购买意向 | 预算 | 决策权 | 紧迫度 |
+## Data format
+
+The first row must contain headers, including at least a `Company` column. Recommended columns accept values on a 0–100, 1–10, or 1–5 scale:
+
+| Company | Customer Fit | Buying Intent | Budget | Authority | Urgency |
 |---|---:|---:|---:|---:|---:|
-| 星海科技 | 90 | 80 | 70 | 60 | 50 |
+| Northstar Technology | 90 | 80 | 70 | 60 | 50 |
 
-也支持常见英文列名，例如 `Company`、`Fit`、`Buying Intent`、`Budget`、`Authority`、`Urgency`。缺失的评分列按 0 分处理。
+Missing scoring columns are treated as zero. Common alternative headers such as `Account`, `Lead`, `Fit`, and localized Chinese equivalents are recognized automatically.
 
-## 本地运行（Windows + 桌面版 Excel）
+## Run locally on Windows with desktop Excel
 
-1. 安装 Node.js 18 或更高版本。
-2. 在本目录运行 `npm install`。
-3. 运行 `npm start`。首次运行会安装本地 HTTPS 证书并把 `manifest.xml` 旁加载到 Excel。
-4. 在 Excel“开始”选项卡点击“潜客分析 → 优先级助手”。
-5. 停止调试时运行 `npm stop`。
+1. Install Node.js 18 or later.
+2. Run `npm install` in this directory.
+3. Run `npm start`. The first run installs a local HTTPS certificate and sideloads `manifest.xml` into Excel.
+4. In Excel, open **Home → Lead Analysis → Priority Assistant**.
+5. Run `npm stop` when you finish debugging.
 
-如果组织策略禁止自动旁加载，可先运行 `npm run serve`，再由 Excel 的“我的加载项/上传我的加载项”手动选择 `manifest.xml`。
+If your organization blocks automatic sideloading, run `npm run serve`, then use Excel's add-in management screen to upload `manifest.xml` manually.
 
-## 评分规则
+## Scoring model
 
-默认权重：客户匹配度 30%、购买意向 25%、预算 20%、决策权 15%、紧迫度 10%。插件会根据实际填写的权重自动归一化：A ≥ 80，B ≥ 60，C ≥ 40，D < 40。每次分析会更新三列：`优先级得分`、`客户优先级`、`评分依据`。
+Default weights are Customer Fit 30%, Buying Intent 25%, Budget 20%, Decision Authority 15%, and Urgency 10%. The add-in normalizes the configured weights automatically.
 
-## 测试
+- A: score of 80 or higher — follow up now
+- B: 60–79 — nurture actively
+- C: 40–59 — monitor
+- D: below 40 — deprioritize
 
-`npm test` 只测试评分引擎，不需要启动 Excel。
+Each analysis adds or updates `Priority Score`, `Lead Priority`, and `Scoring Rationale` columns.
+
+## Test
+
+Run `npm test` to test the scoring engine without starting Excel.
+
+## Privacy
+
+The add-in does not send workbook data to a server. Processing happens through the Excel JavaScript API in the open workbook.

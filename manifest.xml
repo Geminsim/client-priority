@@ -8,8 +8,8 @@
   <Version>1.0.0.0</Version>
   <ProviderName>Client Priority</ProviderName>
   <DefaultLocale>zh-CN</DefaultLocale>
-  <DisplayName DefaultValue="潜客优先级助手"/>
-  <Description DefaultValue="自动评估、排序潜在客户，并生成统计和图表。"/>
+  <DisplayName DefaultValue="Lead Priority Assistant"/>
+  <Description DefaultValue="Score, sort, and visualize prospective customers."/>
   <IconUrl DefaultValue="https://localhost:3000/assets/icon.svg"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon.svg"/>
   <SupportUrl DefaultValue="https://localhost:3000/"/>
@@ -43,8 +43,8 @@
     <Resources>
       <bt:Images><bt:Image id="Icon.16" DefaultValue="https://localhost:3000/assets/icon.svg"/><bt:Image id="Icon.32" DefaultValue="https://localhost:3000/assets/icon.svg"/><bt:Image id="Icon.80" DefaultValue="https://localhost:3000/assets/icon.svg"/></bt:Images>
       <bt:Urls><bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/taskpane.html"/><bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane.html"/></bt:Urls>
-      <bt:ShortStrings><bt:String id="Group.Label" DefaultValue="潜客分析"/><bt:String id="Button.Label" DefaultValue="优先级助手"/></bt:ShortStrings>
-      <bt:LongStrings><bt:String id="Button.Description" DefaultValue="评估潜在客户、自动排序并生成图表。"/></bt:LongStrings>
+      <bt:ShortStrings><bt:String id="Group.Label" DefaultValue="Lead Analysis"/><bt:String id="Button.Label" DefaultValue="Priority Assistant"/></bt:ShortStrings>
+      <bt:LongStrings><bt:String id="Button.Description" DefaultValue="Score prospective customers, sort them, and generate charts."/></bt:LongStrings>
     </Resources>
   </VersionOverrides>
 </OfficeApp>
