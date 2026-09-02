@@ -1,0 +1,5 @@
+{
+  "name":"client-priority-excel-addin","version":"1.0.0","private":true,
+  "scripts":{"start":"office-addin-debugging start manifest.xml desktop","stop":"office-addin-debugging stop manifest.xml","serve":"office-addin-dev-certs install && http-server . -S -C %USERPROFILE%/.office-addin-dev-certs/localhost.crt -K %USERPROFILE%/.office-addin-dev-certs/localhost.key -p 3000 -c-1","test":"node tests/scoring.test.js"},
+  "devDependencies":{"http-server":"^14.1.1","office-addin-debugging":"^6.0.3","office-addin-dev-certs":"^1.13.5"}
+}

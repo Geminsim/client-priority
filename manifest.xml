@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+  xsi:type="TaskPaneApp">
+  <Id>ef6cf50b-5a55-4fd6-9d7f-1231da3d9e24</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Client Priority</ProviderName>
+  <DefaultLocale>zh-CN</DefaultLocale>
+  <DisplayName DefaultValue="潜客优先级助手"/>
+  <Description DefaultValue="自动评估、排序潜在客户，并生成统计和图表。"/>
+  <IconUrl DefaultValue="https://localhost:3000/assets/icon.svg"/>
+  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon.svg"/>
+  <SupportUrl DefaultValue="https://localhost:3000/"/>
+  <AppDomains><AppDomain>https://localhost:3000</AppDomain></AppDomains>
+  <Hosts><Host Name="Workbook"/></Hosts>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://localhost:3000/taskpane.html"/>
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Workbook">
+        <DesktopFormFactor>
+          <FunctionFile resid="Commands.Url"/>
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabHome">
+              <Group id="ClientPriority.Group">
+                <Label resid="Group.Label"/>
+                <Control xsi:type="Button" id="ClientPriority.Open">
+                  <Label resid="Button.Label"/>
+                  <Supertip><Title resid="Button.Label"/><Description resid="Button.Description"/></Supertip>
+                  <Icon><bt:Image size="16" resid="Icon.16"/><bt:Image size="32" resid="Icon.32"/><bt:Image size="80" resid="Icon.80"/></Icon>
+                  <Action xsi:type="ShowTaskpane"><TaskpaneId>Office.AutoShowTaskpaneWithDocument</TaskpaneId><SourceLocation resid="Taskpane.Url"/></Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images><bt:Image id="Icon.16" DefaultValue="https://localhost:3000/assets/icon.svg"/><bt:Image id="Icon.32" DefaultValue="https://localhost:3000/assets/icon.svg"/><bt:Image id="Icon.80" DefaultValue="https://localhost:3000/assets/icon.svg"/></bt:Images>
+      <bt:Urls><bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/taskpane.html"/><bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane.html"/></bt:Urls>
+      <bt:ShortStrings><bt:String id="Group.Label" DefaultValue="潜客分析"/><bt:String id="Button.Label" DefaultValue="优先级助手"/></bt:ShortStrings>
+      <bt:LongStrings><bt:String id="Button.Description" DefaultValue="评估潜在客户、自动排序并生成图表。"/></bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>

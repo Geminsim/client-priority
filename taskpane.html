@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>潜客优先级助手</title>
+  <link rel="stylesheet" href="taskpane.css">
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <script src="scoring.js"></script>
+  <script defer src="taskpane.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand-mark" aria-hidden="true">P</div>
+      <div><h1>潜客优先级助手</h1><p>把客户名单变成清晰的行动顺序</p></div>
+    </header>
+
+    <section id="statusCard" class="status-card" aria-live="polite">
+      <span id="statusDot" class="status-dot"></span>
+      <div><strong id="statusTitle">正在连接 Excel…</strong><p id="statusText">请保持工作簿处于打开状态</p></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading"><span class="step">1</span><div><h2>选择客户数据</h2><p>首行为列名，至少包含公司名称</p></div></div>
+      <button id="detectBtn" class="button secondary" type="button">识别当前数据区域</button>
+      <div id="rangeSummary" class="range-summary hidden"></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading"><span class="step">2</span><div><h2>设置评分权重</h2><p>总分自动换算为 100 分</p></div></div>
+      <div id="weights" class="weights"></div>
+      <button id="resetBtn" class="text-button" type="button">恢复推荐权重</button>
+    </section>
+
+    <section class="panel compact">
+      <label class="check-row"><input id="sortRows" type="checkbox" checked><span><strong>按优先级自动排序</strong><small>保留标题行，最高分排在最前</small></span></label>
+      <label class="check-row"><input id="createDashboard" type="checkbox" checked><span><strong>生成统计仪表盘</strong><small>创建或更新“优先级仪表盘”工作表</small></span></label>
+    </section>
+
+    <button id="analyzeBtn" class="button primary" type="button" disabled><span>分析并生成结果</span><span aria-hidden="true">→</span></button>
+    <p class="privacy">数据只在当前 Excel 工作簿中处理，不会上传。</p>
+  </main>
+</body>
+</html>
